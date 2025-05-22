@@ -1,0 +1,80 @@
+# Qrypsis Compliance Report
+
+**Generated:** {{ generated_at }}
+
+---
+
+{% for section in scan_results %}
+  {% if section.terraform %}
+## Terraform Findings
+
+{% for issue in section.terraform %}
+- **{{ issue.severity }}** | `{{ issue.check_id }}` | {{ issue.check_name }}
+  - Resource: `{{ issue.resource }}`
+  - File: `{{ issue.file }}`
+  - Guideline: [{{ issue.guideline }}]({{ issue.guideline }})
+{% else %}
+_No issues found in Terraform._
+{% endfor %}
+  {% endif %}
+{% endfor %}
+
+---
+
+{% for section in scan_results %}
+  {% if section.kubernetes %}
+## Kubernetes Scanner (kube-bench)
+
+{% for check in section.kubernetes.kube_bench %}
+- **{{ check.severity }}** | `{{ check.id }}` - {{ check.description }}
+{% else %}
+_No kube-bench issues found._
+{% endfor %}
+
+## Kubernetes Pod Misconfigurations (Trivy)
+
+{% for issue in section.kubernetes.trivy %}
+- **{{ issue.severity }}** | {{ issue.check_id }} - {{ issue.title }}
+  - Namespace: `{{ issue.namespace }}`
+  - Resource: `{{ issue.resource }}`
+  - Message: {{ issue.message }}
+{% else %}
+_No Trivy misconfigurations found._
+{% endfor %}
+  {% endif %}
+{% endfor %}
+
+---
+
+{% for section in scan_results %}
+  {% if section.azure %}
+## Azure Key Vault Findings
+
+{% for issue in section.azure %}
+- **{{ issue.severity }}** | `{{ issue.vault }}`
+  - Issue: {{ issue.issue }}
+  - Resource Group: `{{ issue.resource_group }}`
+  - Location: `{{ issue.location }}`
+  {% if issue.secret %}- Secret: `{{ issue.secret }}`{% endif %}
+{% else %}
+_No Azure issues found._
+{% endfor %}
+  {% endif %}
+{% endfor %}
+
+---
+
+{% for section in scan_results %}
+  {% if section.rbac %}
+## Kubernetes RBAC Findings
+
+{% for issue in section.rbac %}
+- **{{ issue.severity }}** | `{{ issue.type }}`
+  - Subject: `{{ issue.subject }}`
+  - Namespace: `{{ issue.namespace }}`
+  - Issue: {{ issue.issue }}
+{% else %}
+_No RBAC issues found._
+{% endfor %}
+  {% endif %}
+{% endfor %}

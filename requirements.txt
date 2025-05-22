@@ -1,0 +1,8 @@
+checkov
+kubernetes
+jinja2
+azure-identity
+azure-mgmt-keyvault
+azure-mgmt-containerregistry
+azure-mgmt-resource
+trivy
