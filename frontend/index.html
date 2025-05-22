@@ -6,37 +6,40 @@
   <title>Qrypsis – Kubernetes & Cloud Compliance Scanner</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-800">
-  <div class="max-w-4xl mx-auto px-4 py-20">
+<body class="bg-gray-950 text-gray-200 font-sans">
+  <div class="max-w-3xl mx-auto px-6 py-20">
     <div class="flex items-center space-x-4">
-      <img src="logo.png" alt="Qrypsis Logo" class="w-12 h-12">
-      <h1 class="text-4xl font-bold tracking-tight">Qrypsis</h1>
+      <img src="logo.png" alt="Qrypsis Logo" class="w-12 h-12 rounded shadow" />
+      <h1 class="text-4xl font-extrabold tracking-tight text-white">Qrypsis</h1>
     </div>
-    <p class="mt-4 text-lg text-gray-600">
+
+    <p class="mt-4 text-lg text-gray-400">
       The open-source compliance scanner for Kubernetes, Terraform, and Azure Key Vault. Built by DevOps engineers, for DevOps engineers.
     </p>
 
-    <div class="mt-6">
-      <a href="https://github.com/mmarconi93/qrypsis.git" target="_blank" class="inline-block px-5 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
+    <div class="mt-6 space-x-4">
+      <a href="https://github.com/mmarconi93/qrypsis.git" target="_blank"
+        class="inline-block px-5 py-3 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700 transition">
         ⭐ View on GitHub
       </a>
-      <a href="#early-access" class="ml-4 inline-block px-5 py-3 bg-gray-100 text-blue-600 rounded-lg shadow hover:bg-gray-200 transition">
+      <a href="#early-access"
+        class="inline-block px-5 py-3 bg-gray-800 text-blue-400 font-medium rounded-lg border border-gray-700 hover:bg-gray-700 transition">
         🚀 Get Early Access
       </a>
     </div>
 
-    <div class="mt-12 grid gap-8 md:grid-cols-2">
+    <div class="mt-12 grid gap-10 md:grid-cols-2">
       <div>
-        <h2 class="text-xl font-semibold">🔒 Scan Across Layers</h2>
-        <ul class="list-disc ml-6 mt-2 text-gray-700">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2">🔒 Scan Across Layers</h2>
+        <ul class="list-disc ml-6 space-y-2 text-gray-300">
           <li>Terraform misconfig detection via Checkov</li>
           <li>Kubernetes runtime scans via Trivy & kube-bench</li>
           <li>Azure Key Vault & RBAC auditing</li>
         </ul>
       </div>
       <div>
-        <h2 class="text-xl font-semibold">📄 Instant Audit Reports</h2>
-        <ul class="list-disc ml-6 mt-2 text-gray-700">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2">📄 Instant Audit Reports</h2>
+        <ul class="list-disc ml-6 space-y-2 text-gray-300">
           <li>Markdown + PDF + HTML report generation</li>
           <li>Exec-friendly summaries + raw issue details</li>
           <li>CI/CD-friendly exit codes</li>
@@ -44,16 +47,19 @@
       </div>
     </div>
 
-    <form id="early-access" class="mt-16 bg-gray-50 p-6 rounded-lg shadow-md">
-      <h3 class="text-lg font-semibold mb-2">💡 Get Early Access</h3>
-      <p class="text-sm text-gray-600 mb-4">Be the first to test Qrypsis and shape its future.</p>
-      <input type="email" placeholder="you@example.com" class="w-full px-4 py-2 border rounded mb-4" required>
-      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+    <form id="early-access" class="mt-16 bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700">
+      <h3 class="text-lg font-semibold text-white mb-2">💡 Get Early Access</h3>
+      <p class="text-sm text-gray-400 mb-4">Be the first to test Qrypsis and shape its future.</p>
+      <input type="email" placeholder="you@example.com"
+        class="w-full px-4 py-2 bg-gray-900 border border-gray-600 text-white rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        required>
+      <button type="submit"
+        class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-medium">
         Join Waitlist
       </button>
     </form>
 
-    <footer class="mt-20 text-center text-sm text-gray-400">
+    <footer class="mt-20 text-center text-sm text-gray-500">
       © 2025 Qrypsis. Built with ❤️ by Mal Marconi.
     </footer>
   </div>
