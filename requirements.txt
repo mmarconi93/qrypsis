@@ -1,3 +1,4 @@
+azure
 checkov
 kubernetes
 jinja2

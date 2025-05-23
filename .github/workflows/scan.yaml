@@ -24,14 +24,15 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+          pip install --upgrade pip
           pip install -r requirements.txt
-      
-      - name: Ensure script is executable
+
+      - name: Ensure run_scan.sh is executable
         run: chmod +x run_scan.sh
 
       - name: Run Qrypsis Scanner
         run: |
-          ./run_scan.sh || true
+          ./run_scan.sh
 
       - name: Upload Compliance Reports
         uses: actions/upload-artifact@v4
@@ -41,6 +42,7 @@ jobs:
             report.md
             report.html
             report.pdf
+        if-no-files-found: warn
 
       - name: Post-scan summary
         run: echo "✅ Qrypsis scan completed. Artifacts uploaded."
