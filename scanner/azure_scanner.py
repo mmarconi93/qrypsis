@@ -4,6 +4,7 @@ from azure.keyvault.secrets import SecretClient
 from azure.mgmt.resource import SubscriptionClient
 from azure_acr_scanner import scan_acr
 from datetime import datetime, timedelta
+from azure_nsg_scanner import scan_nsg
 
 def scan_azure(redact=True):
     credential = DefaultAzureCredential(exclude_interactive_browser_credential=False)
@@ -60,5 +61,8 @@ def scan_azure(redact=True):
 
     acr_results = scan_acr(credential, subscription_id)
     findings.extend(acr_results.get("azure_acr", []))
+
+    nsg_results = scan_nsg(credential, subscription_id)
+    findings.extend(nsg_results.get("azure_nsg", []))
 
     return {"azure": findings}
