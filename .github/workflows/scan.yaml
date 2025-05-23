@@ -25,6 +25,9 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
+      
+      - name: Ensure script is executable
+        run: chmod +x run_scan.sh
 
       - name: Run Qrypsis Scanner
         run: |
