@@ -1,0 +1,15 @@
+terraform:
+  path: ./examples/iac
+
+azure:
+  enabled: true
+  scan_acr: true  # future use (not needed right now since ACR is included)
+
+kubernetes:
+  enabled: true
+  scan_rbac: true
+
+drift:
+  enabled: true
+
+fail_on: HIGH

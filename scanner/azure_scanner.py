@@ -2,10 +2,10 @@ from azure.identity import DefaultAzureCredential
 from azure.mgmt.keyvault import KeyVaultManagementClient
 from azure.keyvault.secrets import SecretClient
 from azure.mgmt.resource import SubscriptionClient
+from azure_acr_scanner import scan_acr
 from datetime import datetime, timedelta
-import os
 
-def scan_azure():
+def scan_azure(redact=True):
     credential = DefaultAzureCredential(exclude_interactive_browser_credential=False)
 
     # Get default subscription
@@ -39,11 +39,12 @@ def scan_azure():
             secrets = secret_client.list_properties_of_secrets()
 
             for s in secrets:
+                secret_name = s.name if not redact else "[REDACTED]"
                 if s.expires_on and s.expires_on < datetime.utcnow() + timedelta(days=30):
                     findings.append({
                         "type": "Secret",
                         "vault": vault_name,
-                        "secret": s.name,
+                        "secret": secret_name,
                         "issue": f"Secret expires on {s.expires_on.date()}",
                         "resource_group": resource_group,
                         "location": location,
@@ -56,5 +57,8 @@ def scan_azure():
                 "issue": f"Failed to scan secrets: {str(e)}",
                 "severity": "LOW"
             })
+
+    acr_results = scan_acr(credential, subscription_id)
+    findings.extend(acr_results.get("azure_acr", []))
 
     return {"azure": findings}

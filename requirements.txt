@@ -1,8 +1,9 @@
 checkov
 kubernetes
 jinja2
+PyYAML
 azure-identity
 azure-mgmt-keyvault
 azure-mgmt-containerregistry
 azure-mgmt-resource
-trivy
+azure-mgmt-containerservice
