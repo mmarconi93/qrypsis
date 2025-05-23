@@ -17,9 +17,12 @@ RUN curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.6.18
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh && \
     mv ./bin/trivy /usr/local/bin/ && \
     rm -rf ./bin
-
+# Copy everything
 WORKDIR /app
 COPY . .
+
+# Ensure run_scan.sh is executable
+RUN chmod +x /app/run_scan.sh
 
 # Run the scanner
 ENTRYPOINT ["./run_scan.sh"]
