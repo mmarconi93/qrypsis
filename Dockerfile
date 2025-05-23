@@ -22,7 +22,7 @@ WORKDIR /app
 COPY . .
 
 # Ensure run_scan.sh is executable
-RUN chmod +x /app/run_scan.sh
+RUN chmod +x run_scan.sh
 
 # Run the scanner
 ENTRYPOINT ["./run_scan.sh"]
