@@ -28,7 +28,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-# Run with config file
+# Run with default config file
 ./run_scan.sh
 
 # Or specify manually

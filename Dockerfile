@@ -5,8 +5,9 @@ RUN apt-get update && \
     apt-get install -y curl unzip git gnupg && \
     pip install --upgrade pip
 
-# Install Python dependencies
-RUN pip install checkov jinja2 kubernetes azure-identity azure-mgmt-keyvault azure-mgmt-resource azure-mgmt-containerregistry azure-keyvault-secrets
+# Python dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 # Install kube-bench
 RUN curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.6.18/kube-bench_0.6.18_linux_amd64.tar.gz | tar xz && \
@@ -19,4 +20,5 @@ RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/
 WORKDIR /app
 COPY . .
 
-CMD ["python", "scanner/main.py"]
+# Run the scanner
+ENTRYPOINT ["./run_scan.sh"]
