@@ -42,7 +42,7 @@ jobs:
             report.md
             report.html
             report.pdf
-        if-no-files-found: warn
+          if-no-files-found: warn
 
       - name: Post-scan summary
         run: echo "✅ Qrypsis scan completed. Artifacts uploaded."
