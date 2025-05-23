@@ -8,3 +8,4 @@ azure-mgmt-containerregistry
 azure-mgmt-resource
 azure-mgmt-containerservice
 azure-mgmt-network
+azure-keyvault-secrets
