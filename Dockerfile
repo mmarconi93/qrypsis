@@ -15,7 +15,8 @@ RUN curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.6.18
 
 # Install Trivy
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh && \
-    mv trivy /usr/local/bin/
+    mv ./bin/trivy /usr/local/bin/ && \
+    rm -rf ./bin
 
 WORKDIR /app
 COPY . .
