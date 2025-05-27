@@ -35,7 +35,7 @@ jobs:
 
       - name: Run scanner
         run: |
-          docker run --rm -v ${{ github.workspace }}:/app ghcr.io/${{ github.repository_owner }}/qrypsis:latest
+          docker run --rm ghcr.io/${{ github.repository_owner }}/qrypsis:latest
 
       - name: Upload Reports
         uses: actions/upload-artifact@v4
